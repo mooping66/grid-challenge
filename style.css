@@ -1,0 +1,110 @@
+/* !METHOD 1: LINE NUMBER*/
+.challenge-1 {
+  width: 1000px;
+  margin: 30px auto;
+
+  display: grid;
+  grid-template-rows: 100px 200px 400px 100px;
+  grid-template-columns: repeat(3, 1fr) 200px;
+  grid-gap: 30px;
+}
+.challenge-1 > * {
+  background-color: palevioletred;
+  padding: 20px;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+.challenge-1__header {
+  grid-column: 1/-1;
+}
+.challenge-1__sidebar {
+  grid-column: 4/5;
+  grid-row: 2 / span 2;
+}
+.challenge-1__main-content {
+  grid-column: 1 / span 3;
+}
+.challenge-1__footer {
+  grid-column: 1/-1;
+}
+
+/* !METHOD 2: LINE NAMES*/
+.challenge-2 {
+  width: 1000px;
+  margin: 30px auto;
+
+  display: grid;
+  grid-template-rows: [header-start] 100px [header-end box-start] 200px [box-end main-start] 400px [main-end footer-start] 100px [footer-end];
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [grid-end];
+  grid-gap: 30px;
+}
+.challenge-2 > * {
+  background-color: mediumvioletred;
+  padding: 20px;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+.challenge-2__header {
+  grid-column: col-start 1 / grid-end;
+}
+.challenge-2__sidebar {
+  grid-column: col-end 3 / grid-end;
+  grid-row: box-start / main-end;
+}
+.challenge-2__main-content {
+  grid-column: col-start 1 / col-end 3;
+}
+.challenge-2__footer {
+  grid-column: col-start 1 / grid-end;
+}
+
+/* !METHOD 3: NAME GRID AREAS*/
+.challenge-3 {
+  width: 1000px;
+  margin: 30px auto;
+
+  display: grid;
+  grid-template-rows: 100px 200px 400px 100px;
+  grid-template-columns: repeat(3, 1fr) 200px;
+  grid-gap: 30px;
+
+  grid-template-areas:
+    ". head head ."
+    "box-1 box-2 box-3 side"
+    "main main main side"
+    "foot foot foot foot";
+}
+.challenge-3 > * {
+  background-color: plum;
+  padding: 20px;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+.challenge-3__header {
+  grid-area: head;
+}
+/* * same name [box]
+.challenge-3__small-box-1,
+.challenge-3__small-box-2,
+.challenge-3__small-box-3 {
+  grid-area: box;
+}*/
+/* * same name [box-x] */
+.challenge-3__small-box-1 {
+  grid-area: box-1;
+}
+.challenge-3__small-box-2 {
+  grid-area: box-2;
+}
+.challenge-3__small-box-3 {
+  grid-area: box-3;
+}
+.challenge-3__sidebar {
+  grid-area: side;
+}
+.challenge-3__main-content {
+  grid-area: main;
+}
+.challenge-3__footer {
+  grid-area: foot;
+}
